@@ -1,83 +1,128 @@
 # Secure File Transfer Monitoring System
 
-![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
-![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Kali%20Linux-success.svg)
-![Domain](https://img.shields.io/badge/Domain-Defensive%20Security%20%7C%20SOC-critical.svg)
-![Status](https://img.shields.io/badge/Status-Completed-brightgreen.svg)
+A lightweight, cross-platform file monitoring toolkit focused on visibility, integrity verification, and policy-based detection of sensitive file movement.  
+The project is intended for practical use, learning, and evaluation in defensive security, SOC monitoring, and digital forensics contexts.
 
-## Project Overview
-The Secure File Transfer Monitoring System is a defensive security tool designed to monitor file system activity, track sensitive file movement, and detect potential data exfiltration or tampering. The project provides practical exposure to SOC monitoring, Blue Team practices, and Digital Forensics by maintaining detailed audit logs and integrity verification using cryptographic hashing.  
-The system is cross-platform and has been tested on both Windows and Kali Linux.
+---
 
-## Why This Project
-Unauthorized file movement and data leakage are common security risks in enterprise environments. This project demonstrates how continuous file monitoring and policy-based controls can help detect insider threats, suspicious transfers, and integrity violations in real time.
+## Overview
 
-## Key Features
-- Real-time file system monitoring for CREATE, MODIFY, MOVE, and DELETE events
-- File integrity verification using SHA-256 hashing
-- Detection of sensitive file movement to suspicious destinations (USB, cloud folders, mounted paths)
-- Detailed security auditing with timestamps, paths, hash values, user identity, and process name
-- Automated generation of a final audit report summarizing all activities and alerts
+File transfers and file modifications are common sources of data leakage, insider misuse, and integrity violations. This toolkit monitors file system activity in real time, records detailed audit logs, and applies configurable rules to identify suspicious or unauthorized behavior.
 
-## Tech Stack
+The system emphasizes clarity and reliability over complexity. It does not attempt to block activity or perform offensive actions; its purpose is monitoring, logging, and reporting.
+
+The toolkit has been tested on Windows and Kali Linux.
+
+---
+
+## What the Tool Does
+
+- Monitors file system events such as creation, modification, movement, and deletion  
+- Tracks sensitive files and directories defined by policy  
+- Verifies file integrity using SHA-256 hashing  
+- Detects movement of sensitive files to suspicious destinations (for example removable media or cloud-synced folders)  
+- Records detailed audit logs with timestamps, paths, user context, and process information  
+- Produces a consolidated audit report when monitoring is stopped  
+
+---
+
+## Intended Use
+
+This project is suitable for:
+- Defensive security demonstrations and labs  
+- SOC monitoring practice  
+- Digital forensics and audit exercises  
+- Academic or training environments  
+
+It is not designed as malware, an intrusion tool, or a prevention system.
+
+---
+
+## Technology Stack
+
 - Language: Python  
 - Libraries:
-  - watchdog – File system event monitoring
-  - hashlib – SHA-256 integrity verification
-  - psutil – Process and user tracking
-- Environment: Tested on Windows and Kali Linux
+  - watchdog for file system event monitoring  
+  - hashlib for cryptographic hashing (SHA-256)  
+  - psutil for process and user context  
+- Platforms: Windows and Kali Linux  
 
-## Project Structure
-```
+---
+
+## Project Layout
+
 Secure_File_Monitor/
-├── diagrams/            # System architecture, workflow, and flowchart diagrams
-├── logs/                # File event logs and security alerts
-├── reports/             # Final audit reports
-├── screenshots/         # Execution evidence (Windows & Linux)
-├── config.json          # Monitoring rules and security policies
-├── monitor.py           # Core monitoring engine
-└── requirements.txt     # Project dependencies
-```
+- diagrams/        System architecture, workflow, and flowchart diagrams  
+- logs/            File event logs and alert records  
+- reports/         Generated audit reports  
+- screenshots/     Execution evidence on supported platforms  
+- config.json      Monitoring rules and policy configuration  
+- monitor.py       Main monitoring script  
+- requirements.txt Python dependencies  
 
-## Getting Started
+---
 
-### Installation
-Install the required dependencies:
-```
+## Installation
+
+1. Ensure Python 3 is installed.
+2. Install dependencies listed in requirements.txt.
+
+Example:
 pip install -r requirements.txt
-```
 
-### Configuration
-Edit `config.json` to define sensitive files and monitoring policies:
-```
-{
-  "sensitive_directory": "C:/Users/YourUser/Documents/Sensitive",
-  "sensitive_files": ["secret_file.txt"],
-  "suspicious_destinations": ["USB", "OneDrive", "Dropbox", "mnt"],
-  "hash_algorithm": "sha256"
-}
-```
+---
 
-### Usage
-Run the monitoring system:
-```
+## Configuration
+
+Monitoring behavior is controlled through config.json. Typical configuration includes:
+- The directory to monitor
+- A list of sensitive files
+- Destination keywords considered suspicious
+- The hashing algorithm used for integrity checks
+
+Adjust paths according to the operating system and environment where the tool is deployed.
+
+---
+
+## Usage
+
+Start monitoring by running:
 python monitor.py
-```
-Press **CTRL + C** to stop monitoring and automatically generate the final audit report.
 
-## Workflow
-1. Monitor – Detects file system events in real time  
-2. Classify – Identifies whether a file is marked as sensitive  
-3. Verify – Computes SHA-256 hash to validate file integrity  
-4. Analyze – Checks authorization and destination policies  
-5. Alert / Log – Records metadata and triggers alerts for violations  
-6. Report – Produces the final security audit report  
+Monitoring continues until interrupted. When stopped, the tool automatically generates a final audit report summarizing all recorded activity.
 
-## Learning Outcomes
-- Practical implementation of Data Loss Prevention (DLP) concepts
-- Detection techniques for insider threats and suspicious data transfers
-- Hands-on experience with Blue Team monitoring and real-world file auditing
-- Cross-platform defensive security tool development
+---
+
+## How It Works (High Level)
+
+1. File system events are captured in real time  
+2. Events are evaluated against the configured sensitive file list  
+3. File integrity is verified using cryptographic hashes  
+4. Destination and policy checks are applied  
+5. Events and alerts are logged  
+6. A final audit report is generated for review  
+
+Detailed diagrams illustrating this flow are available in the diagrams directory.
+
+---
+
+## Output
+
+- Event logs recording all monitored file activity  
+- Alert logs for policy violations or integrity issues  
+- A final audit report suitable for review or documentation  
+
+An empty alert log indicates that no violations were detected during the monitoring period.
+
+---
+
+## Notes
+
+- On Linux systems, temporary files created by editors during safe-write operations may appear in logs. This is expected behavior.  
+- Hash verification is not performed on deleted files, as content is no longer accessible at that stage.  
+
+---
 
 ## Conclusion
-The Secure File Transfer Monitoring System demonstrates a real-world defensive security approach by combining file system monitoring, integrity verification, and policy-based alerting. It aligns closely with SOC and digital forensics practices and provides a strong foundation for further work in defensive cybersecurity.
+
+This toolkit provides a practical approach to observing and auditing file system behavior with minimal assumptions and clear output. It is intended to be understandable, configurable, and easy to extend for further defensive security experimentation or learning.
