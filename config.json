@@ -1,0 +1,16 @@
+{
+  "sensitive_directory": "your_path_here",
+  "sensitive_files": [
+    "secret_file.txt"
+  ],
+  "suspicious_destinations": [
+    "USB",
+    "Removable",
+    "OneDrive",
+    "Google Drive",
+    "Dropbox",
+    "mnt",
+    "media"
+  ],
+  "hash_algorithm": "sha256"
+}

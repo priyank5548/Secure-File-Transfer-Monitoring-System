@@ -1,0 +1,11 @@
+SECURE FILE TRANSFER MONITORING – FINAL AUDIT REPORT
+============================================================
+
+FILE EVENTS:
+2026-02-07 22:17:18,570 | MOVED | FROM C:\Users\Priyank\Documents\Sensitive\secret_file.txt TO C:\Users\Priyank\Documents\Sensitive\corrupted_file.txt
+2026-02-07 22:17:18,586 | MODIFIED | C:\Users\Priyank\Documents\Sensitive\corrupted_file.txt | HASH=dbe2633988e3139d323b10b3d0a8a4c73e4b3a9ed3bfd9721f6d0268200b8bcf | USER=PRIYANK\DR3500Tx | PROCESS=pythonw.exe
+2026-02-07 22:17:25,909 | MODIFIED | C:\Users\Priyank\Documents\Sensitive\corrupted_file.txt | HASH=7c0c359142e10e1405a994279464931f1743688b5ef6a60b9b6763cd9ffffa25 | USER=PRIYANK\DR3500Tx | PROCESS=pythonw.exe
+2026-02-07 22:17:33,291 | DELETED | C:\Users\Priyank\Documents\Sensitive\corrupted_file.txt | HASH=HASH_FAILED | USER=PRIYANK\DR3500Tx | PROCESS=pythonw.exe
+
+
+ALERTS:
