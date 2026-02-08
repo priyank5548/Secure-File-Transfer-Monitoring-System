@@ -1,7 +1,7 @@
-![Python](https://img.shields.io/badge/Python-3.x-blue)
-![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-green)
-![Security](https://img.shields.io/badge/Domain-Blue%20Team%20%7C%20DLP-red)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+[![Python](https://img.shields.io/badge/Python-3.x-blue)](https://www.python.org/)
+[![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-green)](https://github.com/priyank5548/Secure-File-Transfer-Monitoring-System)
+[![Domain](https://img.shields.io/badge/Domain-Blue%20Team%20%7C%20DLP-red)](https://github.com/priyank5548/Secure-File-Transfer-Monitoring-System)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](https://opensource.org/licenses/MIT)
 
 # Secure File Transfer Monitoring System
 
