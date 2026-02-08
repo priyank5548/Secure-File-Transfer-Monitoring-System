@@ -1,128 +1,166 @@
 # Secure File Transfer Monitoring System
 
-A lightweight, cross-platform file monitoring toolkit focused on visibility, integrity verification, and policy-based detection of sensitive file movement.  
-The project is intended for practical use, learning, and evaluation in defensive security, SOC monitoring, and digital forensics contexts.
+A Blue Team / Defensive Security project that monitors file system activity, detects unauthorized file movement, verifies file integrity using cryptographic hashing, generates alerts, and produces a final audit report.
+
+This project simulates real-world SOC, DLP (Data Loss Prevention), and Digital Forensics monitoring techniques used to detect insider threats, data exfiltration, and file tampering.
 
 ---
 
-## Overview
+## Project Overview
 
-File transfers and file modifications are common sources of data leakage, insider misuse, and integrity violations. This toolkit monitors file system activity in real time, records detailed audit logs, and applies configurable rules to identify suspicious or unauthorized behavior.
+File transfers are a major security risk in organizations. Sensitive data can be copied, moved, modified, or deleted without authorization—intentionally or accidentally.
 
-The system emphasizes clarity and reliability over complexity. It does not attempt to block activity or perform offensive actions; its purpose is monitoring, logging, and reporting.
+The Secure File Transfer Monitoring System continuously monitors file system events and provides:
 
-The toolkit has been tested on Windows and Kali Linux.
+- File activity logging  
+- Sensitive file monitoring  
+- Integrity verification using SHA-256 hashing  
+- Unauthorized movement detection  
+- Alert generation  
+- Final audit reporting  
 
----
-
-## What the Tool Does
-
-- Monitors file system events such as creation, modification, movement, and deletion  
-- Tracks sensitive files and directories defined by policy  
-- Verifies file integrity using SHA-256 hashing  
-- Detects movement of sensitive files to suspicious destinations (for example removable media or cloud-synced folders)  
-- Records detailed audit logs with timestamps, paths, user context, and process information  
-- Produces a consolidated audit report when monitoring is stopped  
+The system works on both Linux and Windows.
 
 ---
 
-## Intended Use
+## Key Features
 
-This project is suitable for:
-- Defensive security demonstrations and labs  
-- SOC monitoring practice  
-- Digital forensics and audit exercises  
-- Academic or training environments  
-
-It is not designed as malware, an intrusion tool, or a prevention system.
-
----
-
-## Technology Stack
-
-- Language: Python  
-- Libraries:
-  - watchdog for file system event monitoring  
-  - hashlib for cryptographic hashing (SHA-256)  
-  - psutil for process and user context  
-- Platforms: Windows and Kali Linux  
+- Real-time file system monitoring  
+- Detects create, modify, move, and delete operations  
+- Sensitive directory enforcement  
+- Cryptographic integrity checks (SHA-256)  
+- Policy-based authorization checks  
+- Alert generation for violations  
+- Automatic audit report generation  
+- Cross-platform support (Linux / Windows)  
 
 ---
 
-## Project Layout
+## Project Structure
 
-Secure_File_Monitor/
-- diagrams/        System architecture, workflow, and flowchart diagrams  
-- logs/            File event logs and alert records  
-- reports/         Generated audit reports  
-- screenshots/     Execution evidence on supported platforms  
-- config.json      Monitoring rules and policy configuration  
-- monitor.py       Main monitoring script  
-- requirements.txt Python dependencies  
-
----
-
-## Installation
-
-1. Ensure Python 3 is installed.
-2. Install dependencies listed in requirements.txt.
-
-Example:
-pip install -r requirements.txt
-
----
-
-## Configuration
-
-Monitoring behavior is controlled through config.json. Typical configuration includes:
-- The directory to monitor
-- A list of sensitive files
-- Destination keywords considered suspicious
-- The hashing algorithm used for integrity checks
-
-Adjust paths according to the operating system and environment where the tool is deployed.
+Secure_File_Monitor  
+├── monitor.py                Main monitoring engine  
+├── config.json               Configuration (paths and policies)  
+├── requirements.txt          Python dependencies  
+├── logs  
+│   ├── file_events.log       File activity logs  
+│   └── alerts.log            Security alerts  
+├── reports  
+│   └── final_audit_report.txt    Generated audit report  
+├── diagrams  
+│   ├── Flowchart Diagram.png  
+│   ├── System Architecture Diagram.png  
+│   └── Workflow Process Flow Diagram.png  
+├── screenshots  
+│   ├── linux_result.png  
+│   ├── windows_result.png  
+│   └── final_report.png  
+└── .gitignore  
 
 ---
 
-## Usage
+## Architecture Overview
 
-Start monitoring by running:
-python monitor.py
-
-Monitoring continues until interrupted. When stopped, the tool automatically generates a final audit report summarizing all recorded activity.
-
----
-
-## How It Works (High Level)
-
-1. File system events are captured in real time  
-2. Events are evaluated against the configured sensitive file list  
-3. File integrity is verified using cryptographic hashes  
-4. Destination and policy checks are applied  
-5. Events and alerts are logged  
-6. A final audit report is generated for review  
-
-Detailed diagrams illustrating this flow are available in the diagrams directory.
+1. User or OS performs file operations  
+2. Watchdog monitors file system events  
+3. Sensitive files are identified  
+4. Integrity hash (SHA-256) is calculated  
+5. Authorization and policy checks are applied  
+6. Logs and alerts are generated  
+7. Final audit report is created  
 
 ---
 
-## Output
+## Workflow Summary
 
-- Event logs recording all monitored file activity  
-- Alert logs for policy violations or integrity issues  
-- A final audit report suitable for review or documentation  
-
-An empty alert log indicates that no violations were detected during the monitoring period.
-
----
-
-## Notes
-
-- On Linux systems, temporary files created by editors during safe-write operations may appear in logs. This is expected behavior.  
-- Hash verification is not performed on deleted files, as content is no longer accessible at that stage.  
+1. Monitor file system events  
+2. Detect file operation (create, modify, move, delete)  
+3. Identify sensitive files  
+4. Perform integrity verification  
+5. Check authorization and destination policy  
+6. Generate logs with metadata  
+7. Raise alerts on violations  
+8. Generate final audit report  
 
 ---
 
-## Conclusion
+## Tools and Technologies Used
 
-This toolkit provides a practical approach to observing and auditing file system behavior with minimal assumptions and clear output. It is intended to be understandable, configurable, and easy to extend for further defensive security experimentation or learning.
+- Programming Language: Python  
+- Libraries: watchdog, hashlib, psutil (optional)  
+- Operating Systems: Linux, Windows  
+- Diagrams: Draw.io  
+
+---
+
+## Installation and Setup
+
+1. Clone the repository  
+   git clone https://github.com/your-username/Secure_File_Monitor.git  
+
+2. Navigate to the project directory  
+   cd Secure_File_Monitor  
+
+3. Install dependencies  
+   pip install -r requirements.txt  
+
+4. Configure the sensitive directory in config.json  
+   Example:  
+   sensitive_directory: /home/user/Documents  
+   (Use a Windows path if running on Windows)
+
+---
+
+## Running the Project
+
+Run the monitoring engine:  
+python monitor.py  
+
+The system will:  
+- Start monitoring the configured sensitive directory  
+- Log all file activity  
+- Generate alerts for violations  
+
+Stop monitoring using CTRL + C.  
+A final audit report will be generated automatically.
+
+---
+
+## Sample Outputs
+
+- File Events Log: records all file operations with timestamps, user, process, and hash  
+- Alerts Log: records unauthorized movements and integrity violations  
+- Final Audit Report: consolidated summary of all activity and detections  
+
+---
+
+## Learning Outcomes
+
+- Understanding file system monitoring  
+- Implementing hash-based integrity checks  
+- Detecting unauthorized data movement  
+- Applying Blue Team and SOC monitoring concepts  
+- Building real-world defensive security tooling  
+
+---
+
+## Use Cases
+
+- Data Loss Prevention (DLP)  
+- Insider Threat Detection  
+- Digital Forensics Monitoring  
+- Security Auditing  
+- Blue Team Training Labs  
+
+---
+
+## Disclaimer
+
+This project is for educational and defensive security purposes only.  
+Do not deploy in production environments without proper authorization and hardening.
+
+---
+
+## Author
+
+Developed as a practical cybersecurity project focused on defensive monitoring, auditing, and incident detection.
