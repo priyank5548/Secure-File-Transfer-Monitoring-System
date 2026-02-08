@@ -1,3 +1,8 @@
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-green)
+![Security](https://img.shields.io/badge/Domain-Blue%20Team%20%7C%20DLP-red)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 # Secure File Transfer Monitoring System
 
 A Blue Team / Defensive Security project that monitors file system activity, detects unauthorized file movement, verifies file integrity using cryptographic hashing, generates alerts, and produces a final audit report.
@@ -163,4 +168,4 @@ Do not deploy in production environments without proper authorization.
 
 ## Author
 
-Developed as a practical cybersecurity project focused on defensive monitoring, auditing, and incident detection.
+Developed as a hands-on Blue Team cybersecurity project focused on defensive monitoring, auditing, and incident detection.
