@@ -105,8 +105,7 @@ Secure_File_Monitor
    pip install -r requirements.txt  
 
 4. Configure the sensitive directory in config.json  
-   Use a placeholder path value such as:  
-   <SENSITIVE_DIRECTORY>  
+   Configure the sensitive directory path using a placeholder value.  
 
 ---
 
@@ -129,7 +128,9 @@ A final audit report is generated automatically on exit.
 
 - File Events Log: detailed records of all file operations  
 - Alerts Log: unauthorized movements and integrity violations  
-- Final Audit Report: consolidated summary of monitored activity  
+- Final Audit Report: consolidated summary of monitored activity
+
+Sample logs and reports are included in the repository for reference.
 
 ---
 
